@@ -11,23 +11,13 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: 'MUDr. Petr Markvart',
-    role: 'Oftalmolog',
+    name: 'MUDr. Jamal Karra DDS, MS, CSc.',
+    role: 'ústní, čelistní a obličejová chirurgie',
     badge: 'Lékař',
     badgeColor: 'bg-green-600',
     stats: [
       { value: '15+', label: 'LET PRAXE' },
       { value: '5000+', label: 'OPERACÍ' }
-    ]
-  },
-  {
-    name: 'Hana Šorfová',
-    role: 'Ošetřovatelská péče',
-    badge: 'Sestra',
-    badgeColor: 'bg-purple-600',
-    stats: [
-      { value: '12+', label: 'LET PRAXE' },
-      { value: '3000+', label: 'PACIENTŮ' }
     ]
   }
 ]
@@ -40,11 +30,12 @@ const team: TeamMember[] = [
       <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900 uppercase tracking-tight">
         Náš tým
       </h2>
-      <p class="text-xl text-gray-700 font-medium">Odborníci s dlouholetými zkušenostmi v oboru oftalmologie</p>
+      <p class="text-xl text-gray-700 font-medium">Odborník s dlouholetými zkušenostmi v oboru</p>
     </div>
 
     <!-- Team Grid -->
-    <div class="grid md:grid-cols-2 gap-8 mb-20">
+    <div class="flex justify-center mb-20">
+      <div class="w-full max-w-md">
       <div v-for="member in team" :key="member.name" class="backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl overflow-hidden hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500">
         <!-- Badge -->
         <div class="flex justify-center pt-8 pb-4">
@@ -75,6 +66,7 @@ const team: TeamMember[] = [
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 

@@ -68,9 +68,9 @@ onMounted(() => {
 
         <!-- Premium CTA Buttons -->
         <div :class="['flex flex-wrap items-center justify-center gap-6 transition-all duration-1000 delay-300', mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10']">
-          
+
           <!-- Primary CTA - Black brutalist -->
-          <button class="group relative px-12 py-6 bg-gray-900 border-4 border-gray-900 rounded-2xl font-black text-lg text-white overflow-hidden hover:shadow-2xl hover:shadow-gray-900/30 transition-all duration-500 hover:scale-105 hover:-translate-y-1">
+          <a href="tel:+420703622644" class="group relative px-12 py-6 bg-gray-900 border-4 border-gray-900 rounded-2xl font-black text-lg text-white overflow-hidden hover:shadow-2xl hover:shadow-gray-900/30 transition-all duration-500 hover:scale-105 hover:-translate-y-1 inline-block">
             <span class="relative z-10 flex items-center gap-3 tracking-wide">
               <svg class="w-6 h-6 transform group-hover:rotate-12 transition-transform duration-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
@@ -79,10 +79,10 @@ onMounted(() => {
             </span>
             <!-- Hover effect -->
             <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-          </button>
+          </a>
 
           <!-- Secondary CTA - White brutalist glass -->
-          <button class="group relative px-12 py-6 backdrop-blur-xl bg-white/50 border-4 border-white/50 rounded-2xl font-black text-lg text-gray-900 hover:bg-white/70 hover:border-white/70 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-1">
+          <a href="mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic&body=Dobrý%20den,%0A%0Arád(a)%20bych%20se%20objednal(a)%20na%20vyšetření.%0A%0AJméno:%0ATelefon:%0APožadovaný%20termín:%0A%0ADěkuji" class="group relative px-12 py-6 backdrop-blur-xl bg-white/50 border-4 border-white/50 rounded-2xl font-black text-lg text-gray-900 hover:bg-white/70 hover:border-white/70 hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 inline-block">
             <span class="relative z-10 flex items-center gap-3 tracking-wide">
               <svg class="w-6 h-6 transform group-hover:rotate-12 transition-transform duration-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
@@ -90,7 +90,7 @@ onMounted(() => {
               </svg>
               E-MAIL
             </span>
-          </button>
+          </a>
         </div>
 
         <!-- Premium Feature Badges -->

@@ -8,9 +8,7 @@ const slogan = 'Moderní péče o váš úsměv, špičkové technologie a lidsk
     <HeroSection :slogan="slogan" clinic-name="NClinic" />
     <OpeningHoursSection />
     <ContactInfoSection />
-    <!--
     <TeamSection />
-    -->
     <ServicesSection />
     <Footer />
   </div>

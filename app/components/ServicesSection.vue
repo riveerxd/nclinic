@@ -80,7 +80,7 @@ const categories: ServiceCategory[] = [
     <div class="space-y-12">
       <div v-for="category in categories" :key="category.title" class="relative group">
         <!-- Main card -->
-        <div class="relative backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl p-8 md:p-12 hover:scale-105 hover:-translate-y-1 transition-all duration-500">
+        <div class="relative backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl p-8 md:p-12 transition-all duration-500">
           <!-- Category Header -->
           <div class="mb-8">
             <h3 class="text-3xl font-black text-gray-900 uppercase tracking-wide">
@@ -93,7 +93,7 @@ const categories: ServiceCategory[] = [
             <div v-for="service in category.services" :key="service.name"
                  class="relative group/item overflow-hidden">
               <!-- Item card -->
-              <div class="relative backdrop-blur-xl bg-white/50 border-2 border-white/50 rounded-xl p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <div class="relative backdrop-blur-xl bg-white/50 border-2 border-white/50 rounded-xl p-6 hover:shadow-2xl transition-all duration-300">
                 <div class="flex justify-between items-start mb-2">
                   <h4 class="font-bold text-gray-900 flex-1 pr-4">{{ service.name }}</h4>
                   <!-- Special handling for long prices -->
