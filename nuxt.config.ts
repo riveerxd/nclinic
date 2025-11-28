@@ -337,6 +337,12 @@ export default {
     quality: 80
   },
 
+  // Site config for SEO modules
+  site: {
+    url: 'https://www.nclinic.cz',
+    name: 'NClinic'
+  },
+
   // Runtime config for environment variables
   runtimeConfig: {
     public: {
