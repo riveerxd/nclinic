@@ -2,7 +2,21 @@
 export default {
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-og-image', '@nuxtjs/seo'],
+
+  // OG Image configuration
+  ogImage: {
+    defaults: {
+      width: 1200,
+      height: 630
+    },
+    fonts: [
+      'Inter:400',
+      'Inter:500',
+      'Inter:600',
+      'Inter:700'
+    ]
+  },
 
   // SEO and Performance Optimizations
   app: {
@@ -321,6 +335,12 @@ export default {
   image: {
     formats: ['webp', 'avif', 'jpg'],
     quality: 80
+  },
+
+  // Site config for SEO modules
+  site: {
+    url: 'https://www.nclinic.cz',
+    name: 'NClinic'
   },
 
   // Runtime config for environment variables
