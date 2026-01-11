@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <footer id="footer" class="w-full bg-white/40 backdrop-blur-xl border-t border-white/50 shadow-lg py-12">
+  <footer id="kontakt" class="w-full bg-white/40 backdrop-blur-xl border-t border-white/50 shadow-lg py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-8 items-center">
         <!-- Left: Logo and Description -->

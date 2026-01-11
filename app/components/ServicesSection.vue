@@ -67,7 +67,7 @@ const categories: ServiceCategory[] = [
 </script>
 
 <template>
-  <section id="services" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <section id="sluzby" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <!-- Section Header -->
     <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900 uppercase tracking-tight">
