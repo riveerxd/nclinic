@@ -84,6 +84,7 @@ export default {
         { name: 'business:contact_data:country_name', content: 'Česká republika' }
       ],
       link: [
+        { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
         { rel: 'canonical', href: 'https://www.nclinic.cz/' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -94,6 +95,17 @@ export default {
         { rel: 'dns-prefetch', href: 'https://maps.googleapis.com' }
       ],
       script: [
+        // Google Ads (gtag.js)
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-17868399952',
+          async: true
+        },
+        {
+          innerHTML: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17868399952');`
+        },
         // Organization/Dentist Schema
         {
           type: 'application/ld+json',
