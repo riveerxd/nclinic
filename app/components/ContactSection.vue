@@ -5,6 +5,14 @@ import { useSlideInAnimation } from '~/composables/useSlideInAnimation'
 
 const { isVisible } = useSlideInAnimation()
 
+// Google Ads conversion tracking
+const trackConversion = (url: string) => {
+  if (typeof window !== 'undefined' && typeof window.gtag_report_conversion === 'function') {
+    return window.gtag_report_conversion(url)
+  }
+  window.location.href = url
+}
+
 interface ContactInfo {
   icon: string
   label: string
@@ -96,6 +104,7 @@ const announcement = ref({
                 <a
                   v-if="info.href"
                   :href="info.href"
+                  @click.prevent="trackConversion(info.href)"
                   class="text-lg text-gray-900 font-bold hover:text-gray-700 transition-colors duration-300"
                 >
                   {{ info.value }}
