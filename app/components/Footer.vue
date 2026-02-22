@@ -76,7 +76,7 @@
       <div class="border-t border-white/30 mt-8 pt-8 text-center">
         <p class="text-gray-600">
           © {{ new Date().getFullYear() }} NClinic. Všechna práva vyhrazena.
-          <span class="ml-2">Made by <span class="text-blue-600 hover:text-blue-700">river</span></span>
+          <span class="ml-2">Made by <a href="https://riveer.cz/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 cursor-pointer hover:underline">river</a></span>
         </p>
       </div>
     </div>
