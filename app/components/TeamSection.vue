@@ -19,6 +19,16 @@ const team: TeamMember[] = [
       { value: '15+', label: 'LET PRAXE' },
       { value: '5000+', label: 'OPERACÍ' }
     ]
+  },
+  {
+    name: 'MDDr. Diana Shamol Issa Issa',
+    role: 'praktický stomatolog',
+    badge: 'Lékařka',
+    badgeColor: 'bg-green-600',
+    stats: [
+      { value: '5+', label: 'LET PRAXE' },
+      { value: '1000+', label: 'PACIENTŮ' }
+    ]
   }
 ]
 </script>
@@ -34,8 +44,7 @@ const team: TeamMember[] = [
     </div>
 
     <!-- Team Grid -->
-    <div class="flex justify-center mb-20">
-      <div class="w-full max-w-md">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
       <div v-for="member in team" :key="member.name" class="backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl overflow-hidden hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500">
         <!-- Badge -->
         <div class="flex justify-center pt-8 pb-4">
@@ -66,7 +75,6 @@ const team: TeamMember[] = [
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
