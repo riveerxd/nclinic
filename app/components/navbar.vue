@@ -77,6 +77,11 @@
                 >Lékaři</a
               >
               <a
+                @click="smoothScrollTo('galerie')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                >Galerie</a
+              >
+              <a
                 @click="smoothScrollTo('sluzby')"
                 class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
                 >Služby</a
@@ -144,6 +149,11 @@
             @click="smoothScrollTo('lekari')"
             class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
             >Lékaři</a
+          >
+          <a
+            @click="smoothScrollTo('galerie')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            >Galerie</a
           >
           <a
             @click="smoothScrollTo('sluzby')"

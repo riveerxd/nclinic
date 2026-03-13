@@ -14,6 +14,7 @@ defineOgImageComponent('OgImageTemplate', {
     <OpeningHoursSection />
     <ContactInfoSection />
     <TeamSection />
+    <GallerySection />
     <ServicesSection />
     <Footer />
   </div>

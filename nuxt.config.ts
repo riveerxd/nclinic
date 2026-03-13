@@ -2,7 +2,7 @@
 export default {
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-og-image', '@nuxtjs/seo'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-og-image', '@nuxtjs/seo', '@nuxt/image'],
 
   // OG Image configuration
   ogImage: {
@@ -360,8 +360,15 @@ function gtag_report_conversion(url) {
 
   // Image optimization
   image: {
-    formats: ['webp', 'avif', 'jpg'],
-    quality: 80
+    quality: 80,
+    format: ['webp'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280
+    }
   },
 
   // Site config for SEO modules

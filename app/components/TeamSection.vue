@@ -15,28 +15,28 @@ const team: TeamMember[] = [
     name: 'MUDr. Jamal Karra DDS, MS, CSc.',
     role: 'ústní, čelistní a obličejový chirurg',
     badge: 'Lékař',
-    image: '/images/dr-jamal-karra.jpg',
+    image: '/images/dr-jamal-karra.webp',
     imagePosition: 'center 15%'
   },
   {
     name: 'MDDr. Diana Issa',
     role: 'praktický stomatolog',
     badge: 'Lékařka',
-    image: '/images/dr-diana-issa.jpg',
+    image: '/images/dr-diana-issa.webp',
     imagePosition: 'center 10%'
   },
   {
     name: 'Lidiia Movchan',
     role: 'zdravotní sestra',
     badge: 'Sestra',
-    image: '/images/assistant-lidiia-movchan.jpg',
+    image: '/images/assistant-lidiia-movchan.webp',
     imagePosition: 'center 10%'
   },
   {
     name: 'Diana Buleha',
     role: 'zdravotnická asistentka',
     badge: 'Sestra',
-    image: '/images/assistant-diana-buleha.jpg',
+    image: '/images/assistant-diana-buleha.webp',
     imagePosition: 'center 10%'
   }
 ]
@@ -94,6 +94,8 @@ onMounted(() => {
             <img
               :src="member.image"
               :alt="member.name"
+              loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               :style="{ objectPosition: member.imagePosition || 'center' }"
             />
@@ -142,6 +144,8 @@ onMounted(() => {
             <img
               :src="member.image"
               :alt="member.name"
+              loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               :style="{ objectPosition: member.imagePosition || 'center' }"
             />
