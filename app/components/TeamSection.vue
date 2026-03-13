@@ -174,18 +174,5 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Bottom accent -->
-    <div
-      :class="[
-        'flex justify-center mt-12 transition-all duration-700 delay-600',
-        mounted ? 'opacity-100' : 'opacity-0'
-      ]"
-    >
-      <div class="flex items-center gap-3">
-        <div class="w-2 h-2 rounded-full bg-gray-900/20"></div>
-        <div class="w-16 h-px bg-gradient-to-r from-transparent via-gray-900/20 to-transparent"></div>
-        <div class="w-2 h-2 rounded-full bg-gray-900/20"></div>
-      </div>
-    </div>
   </section>
 </template>
