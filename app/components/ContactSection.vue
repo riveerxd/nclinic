@@ -46,9 +46,11 @@ const contactInfo = ref<ContactInfo[]>([
 ])
 
 const openingHours = ref({
-  weekdays: 'Pondělí – Pátek',
+  weekdays: 'Pondělí – Čtvrtek',
   morning: '8:00 – 12:00',
-  afternoon: '12:30 – 16:00'
+  afternoon: '12:30 – 16:00',
+  friday: 'Pátek',
+  fridayHours: '8:00 – 12:00 | 12:30 – 13:00'
 })
 
 const announcement = ref({
@@ -142,6 +144,17 @@ const announcement = ref({
                   </p>
                   <p class="text-gray-900 font-bold">
                     {{ openingHours.morning }} | {{ openingHours.afternoon }}
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span class="text-2xl">🕐</span>
+                <div>
+                  <p class="text-lg font-black text-gray-900 uppercase tracking-wide">
+                    {{ openingHours.friday }}
+                  </p>
+                  <p class="text-gray-900 font-bold">
+                    {{ openingHours.fridayHours }}
                   </p>
                 </div>
               </div>

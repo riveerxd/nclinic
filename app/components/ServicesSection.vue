@@ -16,8 +16,8 @@ const categories: ServiceCategory[] = [
   {
     title: 'Záchovná stomatologie',
     services: [
-      { name: 'Fotokompozitní výplň dle rozsahu', price: 'od 2200 Kč' },
-      { name: 'Skloionomerní výplň 1 kapsle', price: 'od 1500 Kč' },
+      { name: 'Fotokompozitní výplň dle rozsahu', price: 'od 2 200 Kč' },
+      { name: 'Skloionomerní výplň 1 kapsle', price: 'od 1 500 Kč' },
       { name: 'Provizorní výplň', price: 'od 500 Kč' }
     ]
   },
@@ -25,17 +25,17 @@ const categories: ServiceCategory[] = [
     title: 'Endodoncie',
     services: [
       { name: 'Endodontické ošetření fáze dle počtu kanálků', price: 'od 950 Kč' },
-      { name: 'Endodontické ošetření 2.fáze plnění (za kanálek)', price: 'od 1250 Kč' },
-      { name: 'Reendodontické ošetření 1 kanálek', price: 'od 1250 Kč' }
+      { name: 'Endodontické ošetření 2.fáze plnění (za kanálek)', price: 'od 1 250 Kč' },
+      { name: 'Reendodontické ošetření 1 kanálek', price: 'od 1 250 Kč' }
     ]
   },
   {
     title: 'Protetika',
     services: [
-      { name: 'Korunka metalokeramická', price: 'od 8500 Kč' },
-      { name: 'Korunka celokeramická', price: 'od 10000 Kč' },
-      { name: 'Provizorní korunka', price: 'od 1100 Kč' },
-      { name: 'FRC čep a dostavba', price: 'od 2500 Kč' },
+      { name: 'Korunka metalokeramická', price: 'od 8 500 Kč' },
+      { name: 'Korunka celokeramická', price: 'od 10 000 Kč' },
+      { name: 'Provizorní korunka', price: 'od 1 100 Kč' },
+      { name: 'FRC čep a dostavba', price: 'od 2 500 Kč' },
       { name: 'Otisk alginát', price: 'od 600 Kč' },
       { name: 'Otisk C silikon', price: 'od 750 Kč' },
       { name: 'Cementace na definitivní cement', price: 'od 650 Kč' },
@@ -46,21 +46,27 @@ const categories: ServiceCategory[] = [
     title: 'Chirurgie',
     services: [
       { name: 'Anestezie (mimo ZP)', price: 'od 220 Kč' },
-      { name: 'Komplikovaná extrakce', price: 'od 1500 Kč' },
-      { name: 'Chirurgická extrakce', price: 'od 2500 Kč' },
+      { name: 'Komplikovaná extrakce', price: 'od 1 500 Kč' },
+      { name: 'Chirurgická extrakce', price: 'od 2 500 Kč' },
+      { name: 'Preprotetická chirurgie', price: 'od 5 000 Kč' },
+      { name: 'Implantát', price: 'od 15 000 Kč' },
+      { name: 'Sinus lift', price: 'od 10 000 Kč' },
+      { name: 'Augmentace', price: 'od 3 000 Kč' },
+      { name: 'Apikoektomie', price: 'od 7 000 Kč' },
+      { name: 'Hemiextrakce', price: 'od 2 500 Kč' },
       { name: 'Šití', price: 'od 450 Kč' }
     ]
   },
   {
     title: 'Ceník dentální hygieny 2024',
     services: [
-      { name: 'Vstupní dentální hygiena pro děti od 16 a pro dospělé', price: '1990 Kč', note: '1h' },
-      { name: 'Vstupní dentální hygiena pro děti 6-16 let', price: '1190 Kč', note: '30 min' },
+      { name: 'Vstupní dentální hygiena pro děti od 16 a pro dospělé', price: '1 990 Kč', note: '1h' },
+      { name: 'Vstupní dentální hygiena pro děti 6-16 let', price: '1 190 Kč', note: '30 min' },
       { name: 'Vstupní dentální hygiena pro děti 0-6 let', price: '990 Kč', note: '30 min' },
-      { name: 'Pravidelná dentální hygiena (recall) pro děti od 16 let a dospělé', price: '1490 Kč', note: '30 min' },
-      { name: 'Pravidelná dentální (recall) pro děti 6-16 let', price: '1090 Kč', note: '30 min' },
+      { name: 'Pravidelná dentální hygiena (recall) pro děti od 16 let a dospělé', price: '1 490 Kč', note: '30 min' },
+      { name: 'Pravidelná dentální (recall) pro děti 6-16 let', price: '1 090 Kč', note: '30 min' },
       { name: 'Pravidelná dentální hygiena (recall) pro děti 0-6 let', price: '790 Kč', note: '30 min' },
-      { name: 'Deep scaling, hloubkové čištění parodontálních chobotů', price: '200 Kč za 1 zub / 1 kvadrant 1400 Kč', note: '45min' }
+      { name: 'Deep scaling, hloubkové čištění parodontálních chobotů', price: '200 Kč za 1 zub / 1 kvadrant 1 400 Kč', note: '45min' }
     ]
   }
 ]
@@ -113,4 +119,3 @@ const categories: ServiceCategory[] = [
     </div>
   </section>
 </template>
-
