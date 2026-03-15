@@ -50,7 +50,7 @@ const openingHours = ref({
   morning: '8:00 – 12:00',
   afternoon: '12:30 – 16:00',
   friday: 'Pátek',
-  fridayHours: '8:00 – 12:00 | 12:30 – 13:00'
+  fridayHours: '8:00 – 13:00'
 })
 
 const announcement = ref({
