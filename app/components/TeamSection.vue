@@ -20,7 +20,7 @@ const team: TeamMember[] = [
   },
   {
     name: 'MDDr. Diana Issa',
-    role: 'praktický stomatolog',
+    role: 'Asistentka lékaře',
     badge: 'Lékařka',
     image: '/images/dr-diana-issa.webp',
     imagePosition: 'center 10%'
