@@ -1,0 +1,31 @@
+{
+  "name": "NClinic – Zubní klinika Praha 4 Kamýk",
+  "short_name": "NClinic",
+  "description": "Moderní zubní klinika v Praze 4 Kamýk se specialistou na čelistní a obličejovou chirurgii.",
+  "lang": "cs",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

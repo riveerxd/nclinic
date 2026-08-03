@@ -86,7 +86,13 @@ export default {
       link: [
         { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
         { rel: 'canonical', href: 'https://www.nclinic.cz/' },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        // Favicons. The ?v=2 on favicon.ico busts the year-long `immutable` cache that the
+        // previous 32x32-only icon was shipped with; the other files are new URLs.
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
+        { rel: 'icon', type: 'image/x-icon', sizes: '48x48 32x32 16x16', href: '/favicon.ico?v=2' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
         { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap&subset=latin-ext' },
