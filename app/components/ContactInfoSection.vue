@@ -1,5 +1,13 @@
 <script setup lang="ts">
 // ContactInfoSection - Displays contact information cards and news
+
+// Google Ads conversion tracking
+const trackConversion = (url: string) => {
+  if (typeof window !== 'undefined' && typeof window.gtag_report_conversion === 'function') {
+    return window.gtag_report_conversion(url)
+  }
+  return true
+}
 </script>
 
 <template>
@@ -12,7 +20,10 @@
         </h3>
 
         <!-- Phone Card -->
-        <a href="tel:+420241740815" class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 group">
+        <a
+          href="tel:+420703622644"
+          @click.prevent="trackConversion('tel:+420703622644')"
+          class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 group">
           <div class="flex items-start space-x-4">
             <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gray-800 transition-colors">
               <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -27,7 +38,10 @@
         </a>
 
         <!-- Email Card -->
-        <a href="mailto:sestra@clinicm.cz" class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 group">
+        <a
+          href="mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic"
+          @click.prevent="trackConversion('mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic')"
+          class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 group">
           <div class="flex items-start space-x-4">
             <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gray-800 transition-colors">
               <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
