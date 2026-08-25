@@ -39,7 +39,10 @@ const categories: ServiceCategory[] = [
       { name: 'Otisk alginát', price: 'od 600 Kč' },
       { name: 'Otisk C silikon', price: 'od 750 Kč' },
       { name: 'Cementace na definitivní cement', price: 'od 650 Kč' },
-      { name: 'Cementace na provizorní cement', price: 'od 400 Kč' }
+      { name: 'Cementace na provizorní cement', price: 'od 400 Kč' },
+      { name: 'Zubní můstek', price: 'cena na konzultaci' },
+      { name: 'Snímatelné zubní náhrady (protézy)', price: 'cena na konzultaci' },
+      { name: 'Celková zubní náhrada', price: 'cena na konzultaci' }
     ]
   },
   {

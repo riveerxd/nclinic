@@ -101,7 +101,7 @@ export default {
         { rel: 'dns-prefetch', href: 'https://maps.googleapis.com' }
       ],
       script: [
-        // Google Ads (gtag.js)
+        // Google Ads + Google Analytics 4 (gtag.js)
         {
           src: 'https://www.googletagmanager.com/gtag/js?id=AW-17868399952',
           async: true
@@ -111,7 +111,9 @@ export default {
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-17868399952');
+gtag('config', 'G-RJWNEGPFES');
 
+// Google Ads conversion. Kept as-is so historical data stays comparable.
 function gtag_report_conversion(url) {
   var callback = function () {
     if (typeof(url) != 'undefined') {
@@ -124,6 +126,35 @@ function gtag_report_conversion(url) {
     'currency': 'CZK',
     'event_callback': callback
   });
+  return false;
+}
+
+// Phone and e-mail share one Google Ads conversion label, so they cannot be told
+// apart there. These GA4 events separate them, and unlike the Ads conversion they
+// also fire for visitors who did not arrive from an ad.
+function nclinic_track_contact(kind, url) {
+  var navigated = false;
+  var go = function () {
+    if (navigated) return;
+    navigated = true;
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  try {
+    gtag('event', kind === 'phone' ? 'phone_click' : 'email_click', {
+      'contact_method': kind,
+      'send_to': 'G-RJWNEGPFES'
+    });
+  } catch (e) { /* analytics must never block the call */ }
+  try {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17868399952/OGUMCITJjOEbENDKqMhC',
+      'value': 1.0,
+      'currency': 'CZK',
+      'event_callback': go
+    });
+  } catch (e) { go(); }
+  // Never let a blocked or slow tag swallow the click.
+  setTimeout(go, 700);
   return false;
 }`
         },
@@ -221,6 +252,14 @@ function gtag_report_conversion(url) {
                     '@type': 'MedicalProcedure',
                     name: 'Protetika',
                     description: 'Korunky, můstky a protetické práce'
+                  }
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'MedicalProcedure',
+                    name: 'Zubní náhrady a protézy',
+                    description: 'Snímatelné i celkové zubní náhrady'
                   }
                 },
                 {

@@ -18,12 +18,16 @@ onMounted(() => {
   }, 50)
 })
 
-// Google Ads conversion tracking
-const trackConversion = (url: string) => {
-  if (typeof window !== 'undefined' && typeof window.gtag_report_conversion === 'function') {
-    return window.gtag_report_conversion(url)
+// Contact tracking. Phone and e-mail are reported as separate GA4 events while
+// still firing the shared Google Ads conversion. Falls back to plain navigation
+// if the tag is blocked, so the link never breaks.
+const trackContact = (kind: 'phone' | 'email', url: string) => {
+  const w = typeof window !== 'undefined' ? (window as any) : null
+  if (w && typeof w.nclinic_track_contact === 'function') {
+    return w.nclinic_track_contact(kind, url)
   }
-  return true
+  if (w) { w.location.href = url }
+  return false
 }
 </script>
 
@@ -82,7 +86,7 @@ const trackConversion = (url: string) => {
         >
           <a
             href="tel:+420703622644"
-            @click.prevent="trackConversion('tel:+420703622644')"
+            @click.prevent="trackContact('phone', 'tel:+420703622644')"
             class="flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800 transition-colors text-sm sm:text-base"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -93,7 +97,7 @@ const trackConversion = (url: string) => {
 
           <a
             href="mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic"
-            @click.prevent="trackConversion('mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic')"
+            @click.prevent="trackContact('email', 'mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic')"
             class="flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-white/60 backdrop-blur border border-gray-200 text-gray-900 rounded-xl font-medium hover:bg-white/80 transition-colors text-sm sm:text-base"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
