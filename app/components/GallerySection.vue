@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // GallerySection - Masonry-style clinic gallery
-import { ref, onMounted } from 'vue'
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
 interface GalleryImage {
   src: string
@@ -24,6 +24,9 @@ const mounted = ref(false)
 const lightboxOpen = ref(false)
 const lightboxImage = ref<GalleryImage | null>(null)
 const lightboxIndex = ref(0)
+const failedImages = ref<Record<string, boolean>>({})
+const closeButton = ref<HTMLButtonElement | null>(null)
+const lastTrigger = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   setTimeout(() => {
@@ -31,17 +34,22 @@ onMounted(() => {
   }, 100)
 })
 
-const openLightbox = (image: GalleryImage, index: number) => {
+const openLightbox = (image: GalleryImage, index: number, event: MouseEvent) => {
+  lastTrigger.value = event.currentTarget as HTMLElement
   lightboxImage.value = image
   lightboxIndex.value = index
   lightboxOpen.value = true
   document.body.style.overflow = 'hidden'
+  // Without this the keyboard stays on the page behind the overlay.
+  nextTick(() => closeButton.value?.focus())
 }
 
 const closeLightbox = () => {
   lightboxOpen.value = false
   lightboxImage.value = null
   document.body.style.overflow = ''
+  lastTrigger.value?.focus()
+  lastTrigger.value = null
 }
 
 const nextImage = () => {
@@ -63,6 +71,11 @@ const handleKeydown = (e: KeyboardEvent) => {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
 })
 </script>
 
@@ -98,25 +111,35 @@ onMounted(() => {
         mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       ]"
     >
-      <div
+      <button
         v-for="(image, index) in images"
         :key="image.src"
+        type="button"
+        :aria-label="`Zvětšit: ${image.alt}`"
         :class="[
-          'group relative overflow-hidden rounded-2xl cursor-pointer',
+          'group relative overflow-hidden rounded-2xl cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2',
           image.span === 'tall' ? 'row-span-2' : '',
           image.span === 'wide' ? 'col-span-2' : ''
         ]"
         :style="{ transitionDelay: `${200 + index * 50}ms` }"
-        @click="openLightbox(image, index)"
+        @click="openLightbox(image, index, $event)"
       >
         <!-- Image -->
         <img
+          v-if="!failedImages[image.src]"
           :src="image.src"
           :alt="image.alt"
           loading="lazy"
           decoding="async"
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-out"
+          @error="failedImages[image.src] = true"
         />
+        <div
+          v-else
+          class="w-full h-full flex items-center justify-center bg-slate-200 px-4 text-center text-xs font-bold uppercase tracking-wide text-slate-600"
+        >
+          {{ image.alt }}
+        </div>
 
         <!-- Overlay on hover -->
         <div class="absolute inset-0 bg-gray-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -130,28 +153,34 @@ onMounted(() => {
 
         <!-- Border effect -->
         <div class="absolute inset-0 border-2 border-white/30 rounded-2xl pointer-events-none"></div>
-      </div>
+      </button>
     </div>
 
     <!-- Lightbox -->
     <Teleport to="body">
       <Transition
-        enter-active-class="transition-opacity duration-300"
+        enter-active-class="transition-opacity duration-300 ease-out"
         enter-from-class="opacity-0"
         enter-to-class="opacity-100"
-        leave-active-class="transition-opacity duration-300"
+        leave-active-class="transition-opacity duration-200 ease-in"
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
         <div
           v-if="lightboxOpen"
+          role="dialog"
+          aria-modal="true"
+          :aria-label="lightboxImage ? lightboxImage.alt : 'Galerie'"
           class="fixed inset-0 z-[100] bg-gray-900/95 backdrop-blur-xl flex items-center justify-center"
           @click.self="closeLightbox"
         >
           <!-- Close button -->
           <button
+            ref="closeButton"
+            type="button"
+            aria-label="Zavřít galerii"
             @click="closeLightbox"
-            class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-300 z-10"
+            class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
           >
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -160,8 +189,10 @@ onMounted(() => {
 
           <!-- Prev button -->
           <button
+            type="button"
+            aria-label="Předchozí fotografie"
             @click="prevImage"
-            class="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-gray-900/70 hover:bg-gray-900 flex items-center justify-center transition-colors duration-300 z-10"
+            class="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-gray-900/70 hover:bg-gray-900 flex items-center justify-center transition-colors duration-200 z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
           >
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -170,8 +201,10 @@ onMounted(() => {
 
           <!-- Next button -->
           <button
+            type="button"
+            aria-label="Další fotografie"
             @click="nextImage"
-            class="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-gray-900/70 hover:bg-gray-900 flex items-center justify-center transition-colors duration-300 z-10"
+            class="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-gray-900/70 hover:bg-gray-900 flex items-center justify-center transition-colors duration-200 z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
           >
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -190,7 +223,7 @@ onMounted(() => {
 
           <!-- Counter -->
           <div class="absolute bottom-8 left-0 right-0 text-center">
-            <p class="text-white/50 text-xs">
+            <p class="text-white/70 text-xs tabular-nums">
               {{ lightboxIndex + 1 }} / {{ images.length }}
             </p>
           </div>

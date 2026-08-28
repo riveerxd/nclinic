@@ -36,6 +36,8 @@ const openingHours: OpeningHours[] = [
         >
           <div style="width: 100%">
             <iframe
+              title="Mapa: NClinic, Zárubova 498/31, Praha 4"
+              loading="lazy"
               width="100%"
               height="600"
               frameborder="0"
@@ -57,7 +59,7 @@ const openingHours: OpeningHours[] = [
         <!-- Opening Hours Card -->
         <div class="relative group flex-1">
           <div
-            class="relative backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl p-8 h-full flex flex-col hover:scale-105 hover:-translate-y-1 transition-all duration-500"
+            class="relative backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl p-8 h-full flex flex-col hover:scale-105 hover:-translate-y-1 transition-all duration-300"
           >
             <h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center uppercase tracking-wide">
               <svg
@@ -78,12 +80,12 @@ const openingHours: OpeningHours[] = [
               <div
                 v-for="schedule in openingHours"
                 :key="schedule.day"
-                class="flex items-center justify-between p-4 rounded-xl backdrop-blur-xl bg-white/50 border-2 border-white/50 hover:shadow-xl transition-all"
+                class="flex items-center justify-between gap-4 p-4 rounded-xl backdrop-blur-xl bg-white/50 border-2 border-white/50 hover:shadow-xl transition-all duration-300"
               >
-                <span class="font-black text-gray-900 uppercase text-sm tracking-wide">{{
+                <span class="min-w-0 font-black text-gray-900 uppercase text-sm tracking-wide">{{
                   schedule.day
                 }}</span>
-                <span class="text-gray-900 font-bold">{{
+                <span class="flex-shrink-0 text-gray-900 font-bold tabular-nums">{{
                   schedule.hours
                 }}</span>
               </div>
@@ -94,7 +96,7 @@ const openingHours: OpeningHours[] = [
         <!-- Address & Contact Card -->
         <div class="relative group flex-1">
           <div
-            class="relative backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl p-8 h-full flex flex-col hover:scale-105 hover:-translate-y-1 transition-all duration-500"
+            class="relative backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-3xl shadow-2xl p-8 h-full flex flex-col hover:scale-105 hover:-translate-y-1 transition-all duration-300"
           >
             <h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center uppercase tracking-wide">
               <svg

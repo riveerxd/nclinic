@@ -84,7 +84,7 @@ const announcement = ref({
             'glass-card rounded-3xl p-8 md:p-10',
             'backdrop-blur-xl bg-white/40 border-2 border-white/50',
             'shadow-2xl',
-            'transition-all duration-700 hover:scale-105 hover:-translate-y-1',
+            'transition-all duration-300 hover:scale-105 hover:-translate-y-1',
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           ]"
         >
@@ -127,7 +127,7 @@ const announcement = ref({
               'glass-card rounded-3xl p-8 md:p-10',
               'backdrop-blur-xl bg-white/40 border-2 border-white/50',
               'shadow-2xl',
-              'transition-all duration-700 delay-100 hover:scale-105 hover:-translate-y-1',
+              'transition-all duration-300 delay-100 hover:scale-105 hover:-translate-y-1',
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             ]"
           >
@@ -167,7 +167,7 @@ const announcement = ref({
               'glass-card rounded-3xl p-8 md:p-10',
               'backdrop-blur-xl bg-white/40 border-2 border-white/50',
               'shadow-2xl',
-              'transition-all duration-700 delay-200 hover:scale-105 hover:-translate-y-1',
+              'transition-all duration-300 delay-200 hover:scale-105 hover:-translate-y-1',
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             ]"
           >

@@ -104,14 +104,14 @@ const categories: ServiceCategory[] = [
               <!-- Item card -->
               <div class="relative backdrop-blur-xl bg-white/50 border-2 border-white/50 rounded-xl p-6 hover:shadow-2xl transition-all duration-300">
                 <div class="flex justify-between items-start mb-2">
-                  <h4 class="font-bold text-gray-900 flex-1 pr-4">{{ service.name }}</h4>
+                  <h4 class="font-bold text-gray-900 flex-1 min-w-0 pr-4">{{ service.name }}</h4>
                   <!-- Special handling for long prices -->
                   <div v-if="service.price.includes('/')" class="text-right">
-                    <div v-for="(pricePart, index) in service.price.split(' / ')" :key="index" class="text-base font-black text-gray-900">
+                    <div v-for="(pricePart, index) in service.price.split(' / ')" :key="index" class="text-base font-black text-gray-900 tabular-nums">
                       {{ pricePart }}
                     </div>
                   </div>
-                  <span v-else class="text-xl font-black text-gray-900 whitespace-nowrap">{{ service.price }}</span>
+                  <span v-else class="text-xl font-black text-gray-900 whitespace-nowrap tabular-nums">{{ service.price }}</span>
                 </div>
                 <p v-if="service.note" class="text-sm text-gray-700 font-medium italic mt-2">{{ service.note }}</p>
               </div>

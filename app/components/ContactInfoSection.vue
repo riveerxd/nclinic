@@ -1,10 +1,18 @@
 <script setup lang="ts">
 // ContactInfoSection - Displays contact information cards and news
+import { ref } from 'vue'
 
 // Contact tracking. Phone and e-mail are reported as separate GA4 events while
 // still firing the shared Google Ads conversion. Falls back to plain navigation
-// if the tag is blocked, so the link never breaks.
+// if the tag is blocked, so the link never breaks. The busy flag is there because
+// the tracker does the navigating: a second click while one is in flight would
+// double count and race the redirect.
+const contactBusy = ref(false)
+
 const trackContact = (kind: 'phone' | 'email', url: string) => {
+  if (contactBusy.value) return false
+  contactBusy.value = true
+  setTimeout(() => { contactBusy.value = false }, 1000)
   const w = typeof window !== 'undefined' ? (window as any) : null
   if (w && typeof w.nclinic_track_contact === 'function') {
     return w.nclinic_track_contact(kind, url)
@@ -27,16 +35,16 @@ const trackContact = (kind: 'phone' | 'email', url: string) => {
         <a
           href="tel:+420703622644"
           @click.prevent="trackContact('phone', 'tel:+420703622644')"
-          class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 group">
+          class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
           <div class="flex items-start space-x-4">
             <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gray-800 transition-colors">
               <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
               </svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <h4 class="font-bold text-gray-900 mb-1 uppercase text-xs tracking-wide">Telefon</h4>
-              <p class="text-gray-900 font-bold">+420 703 622 644</p>
+              <p class="text-gray-900 font-bold tabular-nums">+420 703 622 644</p>
             </div>
           </div>
         </a>
@@ -45,7 +53,7 @@ const trackContact = (kind: 'phone' | 'email', url: string) => {
         <a
           href="mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic"
           @click.prevent="trackContact('email', 'mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic')"
-          class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 group">
+          class="block backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
           <div class="flex items-start space-x-4">
             <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gray-800 transition-colors">
               <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -53,9 +61,9 @@ const trackContact = (kind: 'phone' | 'email', url: string) => {
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
               </svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <h4 class="font-bold text-gray-900 mb-1 uppercase text-xs tracking-wide">Email</h4>
-              <p class="text-gray-900 font-bold">sestra@nclinic.cz</p>
+              <p class="text-gray-900 font-bold break-words">sestra@nclinic.cz</p>
             </div>
           </div>
         </a>
@@ -70,7 +78,7 @@ const trackContact = (kind: 'phone' | 'email', url: string) => {
         <div class="backdrop-blur-xl bg-white/40 border-2 border-white/50 rounded-2xl p-6 shadow-xl">
           <div class="flex items-start space-x-3 mb-3">
             <span class="bg-gray-900 text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-wide">NOVÉ</span>
-            <span class="text-sm text-gray-700 font-bold">30. 9. 2025</span>
+            <span class="text-sm text-gray-700 font-bold tabular-nums">30. 9. 2025</span>
           </div>
           <h4 class="text-xl font-black text-gray-900 mb-2">Příjímáme nové pacienty</h4>
           <p class="text-gray-800 font-medium">Naše ordinace má volnou kapacitu pro nové pacienty. Objednejte se telefonicky nebo emailem.</p>

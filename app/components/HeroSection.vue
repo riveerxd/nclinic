@@ -20,8 +20,15 @@ onMounted(() => {
 
 // Contact tracking. Phone and e-mail are reported as separate GA4 events while
 // still firing the shared Google Ads conversion. Falls back to plain navigation
-// if the tag is blocked, so the link never breaks.
+// if the tag is blocked, so the link never breaks. The busy flag is there because
+// the tracker does the navigating: a second click while one is in flight would
+// double count and race the redirect.
+const contactBusy = ref(false)
+
 const trackContact = (kind: 'phone' | 'email', url: string) => {
+  if (contactBusy.value) return false
+  contactBusy.value = true
+  setTimeout(() => { contactBusy.value = false }, 1000)
   const w = typeof window !== 'undefined' ? (window as any) : null
   if (w && typeof w.nclinic_track_contact === 'function') {
     return w.nclinic_track_contact(kind, url)
@@ -87,7 +94,7 @@ const trackContact = (kind: 'phone' | 'email', url: string) => {
           <a
             href="tel:+420703622644"
             @click.prevent="trackContact('phone', 'tel:+420703622644')"
-            class="flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800 transition-colors text-sm sm:text-base"
+            class="flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800 transition-colors duration-200 text-sm sm:text-base tabular-nums focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
@@ -98,7 +105,7 @@ const trackContact = (kind: 'phone' | 'email', url: string) => {
           <a
             href="mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic"
             @click.prevent="trackContact('email', 'mailto:sestra@nclinic.cz?subject=Objednání%20do%20NClinic')"
-            class="flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-white/60 backdrop-blur border border-gray-200 text-gray-900 rounded-xl font-medium hover:bg-white/80 transition-colors text-sm sm:text-base"
+            class="flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/60 backdrop-blur border border-gray-200 text-gray-900 rounded-xl font-medium hover:bg-white/80 transition-colors duration-200 text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>

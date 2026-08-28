@@ -7,7 +7,7 @@
         <div class="flex justify-between items-center h-16">
           <!-- Logo -->
           <div class="flex-shrink-0">
-            <a @click="smoothScrollTo('hero')" class="flex items-center space-x-1 cursor-pointer group">
+            <a href="#hero" @click.prevent="smoothScrollTo('hero')" class="flex items-center space-x-1 cursor-pointer group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
               <!-- Tooth Icon -->
               <svg class="w-10 h-10 text-gray-900 transform group-hover:scale-110 transition-transform" viewBox="0 0 2200 2200" fill="currentColor" stroke="currentColor" stroke-width="80" xmlns="http://www.w3.org/2000/svg">
 <g id="Objects">
@@ -62,33 +62,39 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-8">
               <a
-                @click="smoothScrollTo('hero')"
-                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                href="#hero"
+                @click.prevent="smoothScrollTo('hero')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                 >Domů</a
               >
               <a
-                @click="smoothScrollTo('klinika')"
-                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                href="#klinika"
+                @click.prevent="smoothScrollTo('klinika')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                 >Klinika</a
               >
               <a
-                @click="smoothScrollTo('lekari')"
-                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                href="#lekari"
+                @click.prevent="smoothScrollTo('lekari')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                 >Lékaři</a
               >
               <a
-                @click="smoothScrollTo('galerie')"
-                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                href="#galerie"
+                @click.prevent="smoothScrollTo('galerie')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                 >Galerie</a
               >
               <a
-                @click="smoothScrollTo('sluzby')"
-                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                href="#sluzby"
+                @click.prevent="smoothScrollTo('sluzby')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                 >Služby</a
               >
               <a
-                @click="smoothScrollTo('kontakt')"
-                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+                href="#kontakt"
+                @click.prevent="smoothScrollTo('kontakt')"
+                class="text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                 >Kontakt</a
               >
             </div>
@@ -96,11 +102,14 @@
 
           <!-- Mobile menu button -->
           <div class="md:hidden">
-            <button 
+            <button
+              type="button"
+              :aria-expanded="isMobileMenuOpen"
+              aria-controls="mobile-menu"
               @click="isMobileMenuOpen = !isMobileMenuOpen"
-            class="inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-white/30 focus:outline-none transition-all duration-300"
+            class="inline-flex items-center justify-center p-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-white/30 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >
-              <span class="sr-only">Open main menu</span>
+              <span class="sr-only">{{ isMobileMenuOpen ? 'Zavřít menu' : 'Otevřít menu' }}</span>
               <!-- Hamburger icon with morphing animation -->
               <div class="relative w-6 h-6 flex items-center justify-center">
                 <span 
@@ -126,43 +135,49 @@
         enter-active-class="transition-all duration-300 ease-out"
         enter-from-class="opacity-0 max-h-0"
         enter-to-class="opacity-100 max-h-96"
-        leave-active-class="transition-all duration-300 ease-in"
+        leave-active-class="transition-all duration-200 ease-in"
         leave-from-class="opacity-100 max-h-96"
         leave-to-class="opacity-0 max-h-0"
       >
-        <div v-if="isMobileMenuOpen" class="md:hidden overflow-hidden">
+        <div v-if="isMobileMenuOpen" id="mobile-menu" class="md:hidden overflow-hidden">
           <div
             class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-b border-white/30"
           >
           <a
-            @click="smoothScrollTo('hero')"
-            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            href="#hero"
+                @click.prevent="smoothScrollTo('hero')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-3 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >Domů</a
           >            
           <a
-            @click="smoothScrollTo('klinika')"
-            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            href="#klinika"
+                @click.prevent="smoothScrollTo('klinika')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-3 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >Klinika</a
           >
 
           <a
-            @click="smoothScrollTo('lekari')"
-            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            href="#lekari"
+                @click.prevent="smoothScrollTo('lekari')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-3 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >Lékaři</a
           >
           <a
-            @click="smoothScrollTo('galerie')"
-            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            href="#galerie"
+                @click.prevent="smoothScrollTo('galerie')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-3 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >Galerie</a
           >
           <a
-            @click="smoothScrollTo('sluzby')"
-            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            href="#sluzby"
+                @click.prevent="smoothScrollTo('sluzby')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-3 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >Služby</a
           >
           <a
-            @click="smoothScrollTo('kontakt')"
-            class="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer"
+            href="#kontakt"
+                @click.prevent="smoothScrollTo('kontakt')"
+            class="text-gray-700 hover:text-gray-900 block px-3 py-3 text-base font-semibold transition-all duration-300 hover:bg-white/30 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
             >Kontakt</a
           >
           </div>
@@ -172,9 +187,16 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const isMobileMenuOpen = ref(false);
+
+const handleEscape = (event) => {
+  if (event.key === "Escape") isMobileMenuOpen.value = false;
+};
+
+onMounted(() => window.addEventListener("keydown", handleEscape));
+onBeforeUnmount(() => window.removeEventListener("keydown", handleEscape));
 
 // Smooth scroll function
 const smoothScrollTo = (sectionId) => {
@@ -195,6 +217,11 @@ const smoothScrollTo = (sectionId) => {
     const elementPosition = splitter.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
     
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.scrollTo(0, offsetPosition);
+      return;
+    }
+
     // Premium smooth scroll with longer duration
     const startPosition = window.pageYOffset;
     const distance = offsetPosition - startPosition;

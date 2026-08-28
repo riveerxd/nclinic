@@ -18,7 +18,7 @@ const additionalText = `Naši zubní lékaři využívají nejnovější technik
           'glass-card rounded-3xl p-8 md:p-12 lg:p-16',
           'backdrop-blur-xl bg-white/40 border-2 border-white/50',
           'shadow-2xl',
-          'transition-all duration-700 hover:scale-105 hover:-translate-y-1',
+          'transition-all duration-300 hover:scale-105 hover:-translate-y-1',
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         ]"
       >

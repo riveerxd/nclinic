@@ -46,6 +46,22 @@
 import Navbar from '../components/navbar.vue'
 </script>
 
+<style>
+/* Global, not scoped: the gallery lightbox is teleported to body and would miss a
+   scoped rule. Everything on this site is decoration, so honouring the OS setting
+   costs nothing. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+
 <style scoped>
 /* Slow breathing pulse animation for marine background */
 @keyframes pulse-slow {

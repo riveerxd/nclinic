@@ -8,7 +8,7 @@
       <div class="grid md:grid-cols-2 gap-8 items-center">
         <!-- Left: Logo and Description -->
         <div class="space-y-4 text-center md:text-left">
-          <a class="flex items-center justify-center md:justify-start space-x-1 cursor-pointer group">
+          <a href="#hero" class="inline-flex items-center justify-center md:justify-start space-x-1 cursor-pointer group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">
               <!-- Tooth Icon -->
               <svg class="w-10 h-10 text-gray-900 transform group-hover:scale-110 transition-transform" viewBox="0 0 2200 2200" fill="currentColor" stroke="currentColor" stroke-width="80" xmlns="http://www.w3.org/2000/svg">
 <g id="Objects">
@@ -66,9 +66,9 @@
         <!-- Right: Company Info -->
         <div class="space-y-2 text-gray-700 text-center md:text-right">
           <div class="font-semibold text-gray-900">N Clinic s.r.o.</div>
-          <div>IČO: 17842735</div>
+          <div class="tabular-nums">IČO: 17842735</div>
           <div>Zárubova 498/31</div>
-          <div>Kamýk, 142 00 Praha</div>
+          <div class="tabular-nums">Kamýk, 142 00 Praha</div>
         </div>
       </div>
 
@@ -76,7 +76,7 @@
       <div class="border-t border-white/30 mt-8 pt-8 text-center">
         <p class="text-gray-600">
           © {{ new Date().getFullYear() }} NClinic. Všechna práva vyhrazena.
-          <span class="ml-2">Made by <a href="https://riveer.cz/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 cursor-pointer hover:underline">river</a></span>
+          <span class="ml-2">Made by <a href="https://riveer.cz/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 cursor-pointer hover:underline rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2">river</a></span>
         </p>
       </div>
     </div>
